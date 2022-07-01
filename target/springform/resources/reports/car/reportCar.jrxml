@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportPerson" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d393f090-6f1b-46af-9ebf-b6a874eaee9f">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="P_ID_CAR" class="java.lang.Integer"/>
+	<parameter name="P_ID_MOTOR" class="java.lang.Integer"/>
+	<parameter name="P_MARCA" class="java.lang.String"/>
+	<parameter name="P_MODELO" class="java.lang.String"/>
+	<parameter name="P_COLOR" class="java.lang.String"/>
+	<parameter name="P_AÑO" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     car.`id_car` AS car_id_car,
+     car.`año` AS car_año,
+     car.`color` AS car_color,
+     car.`marca` AS car_marca,
+     car.`modelo` AS car_modelo,
+     car.`id_motor` AS car_id_motor,
+     motor.`id_motor` AS motor_id_motor,
+     motor.`descripcion` AS motor_descripcion
+FROM
+     `motor` motor INNER JOIN `car` car ON motor.`id_motor` = car.`id_motor`]]>
+	</queryString>
+	<field name="car_id_car" class="java.lang.Integer"/>
+	<field name="car_año" class="java.lang.String"/>
+	<field name="car_color" class="java.lang.String"/>
+	<field name="car_marca" class="java.lang.String"/>
+	<field name="car_modelo" class="java.lang.String"/>
+	<field name="car_id_motor" class="java.lang.Integer"/>
+	<field name="motor_id_motor" class="java.lang.Integer"/>
+	<field name="motor_descripcion" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="45" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="555" height="45" uuid="e4d31e83-216e-4839-a41c-9cd8507b73c4"/>
+				<textElement textAlignment="Center">
+					<font size="30" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["REPORTE DE CARROS"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="72" height="20" uuid="a32e68c7-423a-4498-93e1-43b8c2f02c9d"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="0" width="100" height="20" uuid="5528292f-065e-484f-bf18-87f538aae912"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MARCA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="0" width="100" height="20" uuid="8438f196-13d5-4abc-b7fb-0dca21e791af"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MODELO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="352" y="0" width="64" height="20" uuid="f012c6bb-b830-428d-b996-042cbed4ab1c"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COLOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="416" y="0" width="72" height="20" uuid="edbd557b-07a4-4ed6-bce2-955d7b2da311"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MOTOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="272" y="0" width="80" height="20" uuid="33c37366-8f7d-4856-a102-6958af6a3547"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AÑO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="488" y="0" width="67" height="20" uuid="a76ca886-d7e7-49ea-a3c5-9514a90f410a"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripcion]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="72" height="20" uuid="90c92aae-1bcb-4916-9018-3cb2efc08bcb"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{car_id_car}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="72" y="0" width="100" height="20" uuid="ad8bd427-01a4-4a94-9796-2abe8e32d5b2"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{car_marca}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="172" y="0" width="100" height="20" uuid="c5f6592a-1b2e-4d57-bad1-d7c913c518be"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{car_modelo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="416" y="0" width="72" height="20" uuid="b21de09d-d188-4818-b9e5-f16f5dbd1ba7"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{car_id_motor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="488" y="0" width="67" height="20" uuid="d0b71542-5ec1-40c3-8793-1cd73e0a5918"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{motor_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="272" y="0" width="80" height="20" uuid="651bb7a7-f046-4d98-834b-34da494d02d0"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{car_año}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="352" y="0" width="64" height="20" uuid="d1775012-a023-4d26-9d6a-17c4094c6411"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{car_color}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
